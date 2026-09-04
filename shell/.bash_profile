@@ -141,3 +141,9 @@ alias podcast="linecast"
 alias pomodoro="~/.cargo/bin/zeitx"
 alias clock="tty-clock -c -C 4 -r"
 alias visualizer="cava"
+
+# --- Log Management ---
+logtail() { tail -f "$1"; }
+logview() { less +G "$1"; }
+logerr() { grep -iE "error|fail|warn|fatal|exception" "$1"; }
+logclear() { > "$1"; echo "Cleared $1"; }

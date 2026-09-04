@@ -91,3 +91,11 @@ This file contains all the active shortcuts (aliases) configured in your termina
 | `pomodoro`| `~/.cargo/bin/zeitx` | Pomodoro timer & time tracking TUI. |
 | `clock` | `tty-clock -c -C 4 -r` | Beautiful centered terminal clock. |
 | `visualizer` | `cava` | Console-based audio visualizer. |
+
+## 📜 Log Management
+| Alias | Original Command | Description |
+| :--- | :--- | :--- |
+| `logtail [file]` | `tail -f` | Opens a log file and watches it live. Any new lines added to the log will instantly appear on your screen. Use `Ctrl+C` to stop. |
+| `logview [file]` | `less +G` | Opens a massive log file safely and instantly jumps to the very bottom (the newest logs). |
+| `logerr [file]` | `grep -iE ...` | Magically scans the file and extracts only the lines containing Errors, Warnings, Fails, or Exceptions. |
+| `logclear [file]`| `> [file]` | Instantly empties the contents of a log file without deleting the file itself (Great for resetting logs before a test). |

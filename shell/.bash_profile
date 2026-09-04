@@ -147,3 +147,8 @@ logtail() { tail -f "$1"; }
 logview() { less +G "$1"; }
 logerr() { grep -iE "error|fail|warn|fatal|exception" "$1"; }
 logclear() { > "$1"; echo "Cleared $1"; }
+
+# --- Cron Jobs Management ---
+alias cronlist="crontab -l"
+alias cronedit="EDITOR=nvim crontab -e"
+alias cronlog="/usr/bin/log show --process cron --last 24h"

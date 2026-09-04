@@ -99,3 +99,10 @@ This file contains all the active shortcuts (aliases) configured in your termina
 | `logview [file]` | `less +G` | Opens a massive log file safely and instantly jumps to the very bottom (the newest logs). |
 | `logerr [file]` | `grep -iE ...` | Magically scans the file and extracts only the lines containing Errors, Warnings, Fails, or Exceptions. |
 | `logclear [file]`| `> [file]` | Instantly empties the contents of a log file without deleting the file itself (Great for resetting logs before a test). |
+
+## 🕒 Cron Jobs (Scheduled Tasks)
+| Alias | Original Command | Description |
+| :--- | :--- | :--- |
+| `cronlist` | `crontab -l` | Lists all your currently active scheduled cron jobs. |
+| `cronedit` | `crontab -e` | Opens your cron file safely inside Neovim so you can add or edit scheduled tasks. |
+| `cronlog`  | `/usr/bin/log show ...` | Shows the system logs for cron over the last 24 hours (so you can see if your jobs actually ran). |

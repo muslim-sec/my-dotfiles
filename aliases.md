@@ -120,3 +120,8 @@ This file contains all the active shortcuts (aliases) configured in your termina
 | Alias | Original Command | Description |
 | :--- | :--- | :--- |
 | `genpass` | `/dev/urandom...` | Generates a highly secure 24-character random password instantly. |
+
+## 🏴‍☠️ Penetration Testing (Exegol)
+| Alias | Original Command | Description |
+| :--- | :--- | :--- |
+| `exe` | `exegol start...` | Smart Exegol Launcher: Checks if Docker is running, starts it if it isn't, waits for the daemon to be ready, then seamlessly launches the `pentest` workspace on the `free` image. |

@@ -170,3 +170,19 @@ alias .5='cd ../../../../..'
 
 # --- Password Generator ---
 alias genpass="tr -dc 'A-Za-z0-9!@#$%^&*()_+=' < /dev/urandom | head -c 24; echo"
+
+# --- Exegol & Docker ---
+exe() {
+    if ! pgrep -q "Docker"; then
+        echo "🐳 Docker Desktop is not running. Starting it now..."
+        open -a Docker
+    fi
+    
+    echo "⏳ Waiting for Docker daemon to become ready..."
+    while ! docker info >/dev/null 2>&1; do
+        sleep 1
+    done
+    
+    echo "✅ Docker is ready! Launching Exegol..."
+    exegol start pentest free
+}

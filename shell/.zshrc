@@ -147,3 +147,49 @@ logclear() { > "$1"; echo "Cleared $1"; }
 alias cronlist="crontab -l"
 alias cronedit="EDITOR=nvim crontab -e"
 alias cronlog="/usr/bin/log show --process cron --last 24h"
+
+# --- Auto Zsh Plugins ---
+ZPLUGINDIR="${ZDOTDIR:-$HOME/.config/zsh}/plugins"
+_zplugin_load() {
+  local plugin_path="${ZPLUGINDIR}/${2}"
+  if [[ ! -d "$plugin_path" ]]; then
+    mkdir -p "$ZPLUGINDIR"
+    echo "Installing ${2}..."
+    git clone --depth=1 "https://github.com/${1}/${2}" "$plugin_path"
+  fi
+  source "${plugin_path}/${2}.plugin.zsh"
+}
+_zplugin_load zsh-users zsh-autosuggestions
+_zplugin_load zsh-users zsh-history-substring-search
+
+# --- Smart Auto-Completion & AUTOCD ---
+setopt AUTOCD
+autoload -Uz compinit
+compinit
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
+# --- Advanced FZF + Bat Integration ---
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --strip-cwd-prefix --exclude .git'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_DEFAULT_OPTS='--height=60% --layout=reverse --border=rounded --preview-window=right:65%:wrap:border-left'
+export _FZF_PREVIEW_CMD='bat --color=always --style=plain,numbers --line-range=:500 {}'
+export FZF_CTRL_T_OPTS="--preview '$_FZF_PREVIEW_CMD'"
+_fzf_file_no_hidden() {
+  local cmd="${FZF_DEFAULT_COMMAND/--hidden /}"
+  local result=$(eval "${cmd:-find . -type f}" | fzf --preview "$_FZF_PREVIEW_CMD")
+  [[ -n "$result" ]] && LBUFFER+="$result"
+  zle reset-prompt
+}
+zle -N _fzf_file_no_hidden
+bindkey '^F' _fzf_file_no_hidden
+
+# --- Quick Dot Aliases ---
+alias .1='cd ..'
+alias .2='cd ../..'
+alias .3='cd ../../..'
+alias .4='cd ../../../..'
+alias .5='cd ../../../../..'
+
+# --- Password Generator ---
+alias genpass="tr -dc 'A-Za-z0-9!@#$%^&*()_+=' < /dev/urandom | head -c 24; echo"

@@ -67,3 +67,12 @@ Welcome to your personalized, high-performance terminal! This guide explains all
 - **Cava (`visualizer`)**: The ultimate `r/unixporn` flex. A gorgeous real-time audio visualizer that bounces to whatever music is playing on your machine.
 - **Tty-clock (`clock`)**: A minimalist, large digital clock that perfectly fills an empty Zellij pane.
 - **Chafa**: A masterclass in rendering high-resolution images, GIFs, and album art directly in your terminal output using Sixel or Kitty graphics protocol.
+
+### 8. Auto-Fetching Zsh Plugins & Smart Autocomplete
+Automatically clones and loads `zsh-autosuggestions` (history-based grey suggestions) and `zsh-history-substring-search`. Includes case-insensitive smart completion and interactive menus.
+
+### 9. AUTOCD (Directory Auto-Jump)
+Type the name of any folder (e.g. `Downloads`) and hit enter to automatically jump inside it, no `cd` command required!
+
+### 10. Advanced FZF + Bat Previews
+Fuzzy finding is now powered by `fd` and styled with a 60% reversed rounded border. Shows live syntax-highlighted previews of files on the right side using `bat` before you even open them.

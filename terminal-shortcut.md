@@ -87,3 +87,9 @@ These unified tools share the same mental model:
 | `Space` | Select, stage, or toggle the current item. |
 | `x` | Open the main menu of actions for the selected panel. |
 | `q` or `Esc` | Go back or quit the app entirely. |
+
+## 🔍 FZF Fast File Searching
+| Shortcut | Action |
+| :--- | :--- |
+| `Ctrl + T` | Opens an advanced FZF file picker with a live `bat` syntax-highlighted preview. |
+| `Ctrl + F` | Custom shortcut: Opens the FZF file picker but strictly ignores hidden files/folders. |

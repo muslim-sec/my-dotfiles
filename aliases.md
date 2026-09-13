@@ -106,3 +106,17 @@ This file contains all the active shortcuts (aliases) configured in your termina
 | `cronlist` | `crontab -l` | Lists all your currently active scheduled cron jobs. |
 | `cronedit` | `crontab -e` | Opens your cron file safely inside Neovim so you can add or edit scheduled tasks. |
 | `cronlog`  | `/usr/bin/log show ...` | Shows the system logs for cron over the last 24 hours (so you can see if your jobs actually ran). |
+
+## 🚀 Navigation & Dot Aliases
+| Alias | Original Command | Description |
+| :--- | :--- | :--- |
+| `.1` | `cd ..` | Go back 1 directory |
+| `.2` | `cd ../..` | Go back 2 directories |
+| `.3` | `cd ../../..` | Go back 3 directories |
+| `.4` | `cd ../../../..` | Go back 4 directories |
+| `.5` | `cd ../../../../..` | Go back 5 directories |
+
+## 🔒 Security
+| Alias | Original Command | Description |
+| :--- | :--- | :--- |
+| `genpass` | `/dev/urandom...` | Generates a highly secure 24-character random password instantly. |

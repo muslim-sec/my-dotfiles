@@ -211,6 +211,36 @@ exe() {
 }
 export PATH="/Users/mac/strix:$PATH"
 
-# Wi-Fi Enforcer Aliases
-alias wifi-stop='networksetup -setairportpower en0 off'
-alias wifi-start='networksetup -setairportpower en0 on'
+# Wi-Fi Enforcer ADHD-Friendly Aliases
+
+# wifi-disable: Unloads the enforcer so you have unrestricted access, and turns Wi-Fi ON.
+alias wifi-disable='launchctl unload ~/Library/LaunchAgents/com.user.wifienforcer.plist 2>/dev/null; networksetup -setairportpower en0 on; echo "Wi-Fi Enforcer STOPPED. Unrestricted access granted."'
+
+# wifi-enable: Loads the enforcer so the schedule takes over. It will naturally turn Wi-Fi on or off based on the clock.
+alias wifi-enable='launchctl load ~/Library/LaunchAgents/com.user.wifienforcer.plist 2>/dev/null; echo "Wi-Fi Enforcer STARTED. The schedule is now active."'
+
+# wifi-status: Check if it is running and what the schedule is.
+wifi-status() {
+  if launchctl list | grep -q com.user.wifienforcer; then
+    echo "🟢 Status: ACTIVE (The background enforcer is running)"
+  else
+    echo "🔴 Status: INACTIVE (The background enforcer is completely stopped)"
+  fi
+  echo "🕒 Schedule: OFF from $(grep 'OFFLINE_START=' ~/.local/bin/wifi_enforcer.sh | cut -d'"' -f2) to $(grep 'OFFLINE_END=' ~/.local/bin/wifi_enforcer.sh | cut -d'"' -f2)"
+}
+
+# wifi-config: Fast way to configure the schedule
+wifi-config() {
+  if [[ -z "$1" || -z "$2" ]]; then
+    echo "Usage: wifi-config <START_TIME> <END_TIME>"
+    echo "Example: wifi-config 22:00 07:00"
+    return 1
+  fi
+  sed -i '' "s/OFFLINE_START=\".*\"/OFFLINE_START=\"$1\"/" ~/.local/bin/wifi_enforcer.sh
+  sed -i '' "s/OFFLINE_END=\".*\"/OFFLINE_END=\"$2\"/" ~/.local/bin/wifi_enforcer.sh
+  echo "Wi-Fi enforcer schedule updated: OFF at $1, ON at $2"
+}
+
+# --- OpenCode CLI & NPM Global ---
+export PATH="$HOME/.npm-global/bin:$PATH"
+alias code="opencode"

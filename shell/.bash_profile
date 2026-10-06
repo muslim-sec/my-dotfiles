@@ -190,3 +190,10 @@ exe() {
 # --- Focus & ADHD Mode ---
 alias wifi-stop='networksetup -setairportpower en0 off'
 alias wifi-start='networksetup -setairportpower en0 on'
+if [ -f ~/.bashrc ]; then
+    source ~/.bashrc
+fi
+
+# --- OpenCode CLI & NPM Global ---
+export PATH="$HOME/.npm-global/bin:$PATH"
+alias code="opencode"

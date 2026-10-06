@@ -131,3 +131,8 @@ This file contains all the active shortcuts (aliases) configured in your termina
 | :--- | :--- | :--- |
 | `wifi-stop` | `networksetup ... off` | Instantly disables Wi-Fi to eliminate distractions and enforce focus mode. |
 | `wifi-start`| `networksetup ... on` | Re-enables Wi-Fi when the focus session is over. |
+
+## 💻 Editor & IDE
+| Alias | Original Command | Description |
+| :--- | :--- | :--- |
+| `code` | `opencode` | Launches the OpenCode CLI. |

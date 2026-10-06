@@ -125,3 +125,9 @@ This file contains all the active shortcuts (aliases) configured in your termina
 | Alias | Original Command | Description |
 | :--- | :--- | :--- |
 | `exe` | `exegol start...` | Smart Exegol Launcher: Checks if Docker is running, starts it if it isn't, waits for the daemon to be ready, then seamlessly launches the `pentest` workspace on the `free` image. |
+
+## 🧘‍♂️ Focus & ADHD Mode (Wi-Fi Control)
+| Alias | Original Command | Description |
+| :--- | :--- | :--- |
+| `wifi-stop` | `networksetup ... off` | Instantly disables Wi-Fi to eliminate distractions and enforce focus mode. |
+| `wifi-start`| `networksetup ... on` | Re-enables Wi-Fi when the focus session is over. |

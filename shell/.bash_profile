@@ -186,3 +186,7 @@ exe() {
     echo "✅ Docker is ready! Launching Exegol..."
     exegol start pentest free
 }
+
+# --- Focus & ADHD Mode ---
+alias wifi-stop='networksetup -setairportpower en0 off'
+alias wifi-start='networksetup -setairportpower en0 on'

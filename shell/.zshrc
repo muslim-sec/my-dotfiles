@@ -209,3 +209,8 @@ exe() {
     echo "✅ Docker is ready! Launching Exegol..."
     exegol start pentest free
 }
+export PATH="/Users/mac/strix:$PATH"
+
+# Wi-Fi Enforcer Aliases
+alias wifi-stop='networksetup -setairportpower en0 off'
+alias wifi-start='networksetup -setairportpower en0 on'

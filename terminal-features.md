@@ -79,3 +79,6 @@ Fuzzy finding is now powered by `fd` and styled with a 60% reversed rounded bord
 
 ### 11. Advanced Archive Splitting & Merging (7-Zip)
 Integrated `7z` functionality to handle massive files and folders. Features custom aliases (`split-tg`, `split-1g`, `unsplit`) designed to intelligently split large backups into smaller chunks (like 1.9GB for Telegram) and automatically merge/extract `.001`, `.002` multipart files seamlessly.
+
+### 12. Smart Penetration Testing Launcher (Exegol)
+A highly automated and intelligent launcher for the Exegol hacking environment. Using the `exe` command, the terminal will automatically check if the Docker daemon is running, start Docker Desktop in the background if it's closed, wait patiently for it to become fully responsive, and then seamlessly launch the `pentest free` workspace.

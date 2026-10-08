@@ -197,3 +197,28 @@ fi
 # --- OpenCode CLI & NPM Global ---
 export PATH="$HOME/.npm-global/bin:$PATH"
 alias code="opencode"
+
+# --- Archive Splitting & Merging ---
+split-tg() {
+    if [ -z "$1" ] || [ -z "$2" ]; then
+        echo "Usage: split-tg <output_name> <folder_or_file>"
+    else
+        7z a -v1900m "$1.7z" "$2"
+    fi
+}
+
+split-1g() {
+    if [ -z "$1" ] || [ -z "$2" ]; then
+        echo "Usage: split-1g <output_name> <folder_or_file>"
+    else
+        7z a -v1g "$1.7z" "$2"
+    fi
+}
+
+unsplit() {
+    if [ -z "$1" ]; then
+        echo "Usage: unsplit <file.001>"
+    else
+        7z x "$1"
+    fi
+}

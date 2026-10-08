@@ -76,3 +76,6 @@ Type the name of any folder (e.g. `Downloads`) and hit enter to automatically ju
 
 ### 10. Advanced FZF + Bat Previews
 Fuzzy finding is now powered by `fd` and styled with a 60% reversed rounded border. Shows live syntax-highlighted previews of files on the right side using `bat` before you even open them.
+
+### 11. Advanced Archive Splitting & Merging (7-Zip)
+Integrated `7z` functionality to handle massive files and folders. Features custom aliases (`split-tg`, `split-1g`, `unsplit`) designed to intelligently split large backups into smaller chunks (like 1.9GB for Telegram) and automatically merge/extract `.001`, `.002` multipart files seamlessly.

@@ -244,3 +244,42 @@ wifi-config() {
 # --- OpenCode CLI & NPM Global ---
 export PATH="$HOME/.npm-global/bin:$PATH"
 alias code="opencode"
+
+# Wi-Fi Enforcer Help Command
+wifi() {
+  if [[ "$1" == "-h" || "$1" == "--help" || -z "$1" ]]; then
+    echo "📡 Wi-Fi Enforcer Commands:"
+    echo "  wifi-enable   - Start the enforcer (activates the schedule)"
+    echo "  wifi-disable  - Stop the enforcer and turn Wi-Fi ON (unrestricted)"
+    echo "  wifi-status   - Check if the enforcer is running and view current schedule"
+    echo "  wifi-config   - Change the schedule (e.g., wifi-config 22:00 07:00)"
+    echo "  wifi -h       - Show this help menu"
+  else
+    echo "Unknown command. Type 'wifi -h' for a list of available commands."
+  fi
+}
+
+# --- Archive Splitting & Merging ---
+split-tg() {
+    if [ -z "$1" ] || [ -z "$2" ]; then
+        echo "Usage: split-tg <output_name> <folder_or_file>"
+    else
+        7z a -v1900m "$1.7z" "$2"
+    fi
+}
+
+split-1g() {
+    if [ -z "$1" ] || [ -z "$2" ]; then
+        echo "Usage: split-1g <output_name> <folder_or_file>"
+    else
+        7z a -v1g "$1.7z" "$2"
+    fi
+}
+
+unsplit() {
+    if [ -z "$1" ]; then
+        echo "Usage: unsplit <file.001>"
+    else
+        7z x "$1"
+    fi
+}

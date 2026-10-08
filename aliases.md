@@ -136,3 +136,10 @@ This file contains all the active shortcuts (aliases) configured in your termina
 | Alias | Original Command | Description |
 | :--- | :--- | :--- |
 | `code` | `opencode` | Launches the OpenCode CLI. |
+
+## 📦 Archive Splitting & Merging (7-Zip)
+| Alias / Function | Usage | Description |
+| :--- | :--- | :--- |
+| `split-tg` | `split-tg OutputName Folder/` | Compresses a folder and splits it into exactly 1.9GB chunks (Ideal for Telegram limits). |
+| `split-1g` | `split-1g OutputName Folder/` | Compresses a folder and splits it into exactly 1GB chunks. |
+| `unsplit` | `unsplit archive.7z.001` | Intelligently merges and extracts split multipart files (`.001`, `.002`, etc.) automatically. |

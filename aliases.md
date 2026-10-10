@@ -136,6 +136,7 @@ This file contains all the active shortcuts (aliases) configured in your termina
 | Alias | Original Command | Description |
 | :--- | :--- | :--- |
 | `code` | `opencode` | Launches the OpenCode CLI. |
+| `code-update` | `npm install -g @opencode/cli@latest` | Updates the OpenCode CLI to the latest version. |
 
 ## 📦 Archive Splitting & Merging (7-Zip)
 | Alias / Function | Usage | Description |

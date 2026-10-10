@@ -82,3 +82,6 @@ Integrated `7z` functionality to handle massive files and folders. Features cust
 
 ### 12. Smart Penetration Testing Launcher (Exegol)
 A highly automated and intelligent launcher for the Exegol hacking environment. Using the `exe` command, the terminal will automatically check if the Docker daemon is running, start Docker Desktop in the background if it's closed, wait patiently for it to become fully responsive, and then seamlessly launch the `pentest free` workspace.
+
+### 13. OpenCode CLI Integration
+Integrated support for the OpenCode CLI globally. Type `code` from anywhere in the terminal to launch the `@opencode/cli` tool (without needing `npx`), and simply run `code-update` to automatically fetch and install the latest updates for it via npm.

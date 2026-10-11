@@ -226,3 +226,4 @@ alias code-update="npm install -g @opencode/cli@latest"
 
 # Disable XON/XOFF flow control to allow Ctrl+S in Zellij
 stty -ixon 2>/dev/null
+alias e="exit"

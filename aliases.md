@@ -8,6 +8,7 @@ This file contains all the active shortcuts (aliases) configured in your termina
 | `..` | `cd ..` | Move up one directory (e.g., from `folder/subfolder` to `folder`). |
 | `...` | `cd ../..` | Move up two directories at once. |
 | `c` | `clear` | Clears all text from the terminal screen instantly. |
+| `e` | `exit` | Exits/closes the current terminal shell or pane instantly. |
 | `mkcd` | `mkdir -p $1 && cd $1` | Creates a new directory and instantly jumps inside it (e.g., `mkcd my_project`). |
 | `z` | `zoxide` | Smart cd command that remembers your directories. Just type `z name` to jump directly to it! |
 | `zi` | `zoxide interactive` | Interactive fuzzy search through your most used directories using fzf. |

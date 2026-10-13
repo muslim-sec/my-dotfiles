@@ -85,3 +85,6 @@ A highly automated and intelligent launcher for the Exegol hacking environment. 
 
 ### 13. OpenCode CLI Integration
 Integrated support for the OpenCode CLI globally. Type `code` from anywhere in the terminal to launch the `@opencode/cli` tool (without needing `npx`), and simply run `code-update` to automatically fetch and install the latest updates for it via npm.
+
+### 14. macOS Deep Clean & System Optimizer (Mole)
+A fast, privacy-focused system cleaner and optimization CLI for macOS (`mole` / `mo`). It provides native commands to deep clean system caches, thoroughly uninstall apps without leftover files, purge development project artifacts, analyze disk space consumption, and monitor system health directly from the terminal without bloated GUI utilities.

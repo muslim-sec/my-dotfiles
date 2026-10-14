@@ -24,17 +24,17 @@ export PATH="/Users/mac/.antigravity-ide/antigravity-ide/bin:$PATH"
 # --- Modern Colorful Terminal Tools (Arabic-aware & Auto-Shaped) ---
 ls() {
     if [ -t 1 ]; then
-        eza --icons --color=always "$@" | arbidi
+        eza --icons=always --color=always "$@" | arbidi
     else
-        eza --icons "$@"
+        eza --icons=always "$@"
     fi
 }
 
 ll() {
     if [ -t 1 ]; then
-        eza -la --icons --color=always "$@" | arbidi
+        eza -la --icons=always --color=always "$@" | arbidi
     else
-        eza -la --icons "$@"
+        eza -la --icons=always "$@"
     fi
 }
 

@@ -227,3 +227,13 @@ alias code-update="npm install -g @opencode/cli@latest"
 # Disable XON/XOFF flow control to allow Ctrl+S in Zellij
 stty -ixon 2>/dev/null
 alias e="exit"
+
+# --- Arabic & RTL Support ---
+alias arabic="dosu"
+arcat() {
+    if [ -z "$1" ]; then
+        fribidi
+    else
+        fribidi "$@"
+    fi
+}

@@ -88,3 +88,6 @@ Integrated support for the OpenCode CLI globally. Type `code` from anywhere in t
 
 ### 14. macOS Deep Clean & System Optimizer (Mole)
 A fast, privacy-focused system cleaner and optimization CLI for macOS (`mole` / `mo`). It provides native commands to deep clean system caches, thoroughly uninstall apps without leftover files, purge development project artifacts, analyze disk space consumption, and monitor system health directly from the terminal without bloated GUI utilities.
+
+### 15. Native Arabic & Right-to-Left (RTL) Support (Dosu & FriBidi)
+Integrated bidirectional text rendering and Arabic script shaping. Launching an interactive session via `arabic` (powered by Dosu) intercepts terminal output dynamically, executing the Unicode Bidirectional Algorithm (UAX #9) and OpenType character shaping so Arabic text appears cursive, properly ordered, and correctly connected. Additionally, `arcat` (powered by FriBidi) allows reading or streaming Arabic text files cleanly directly from the command line without distorting terminal grid layouts or breaking shell prompts.

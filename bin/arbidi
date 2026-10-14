@@ -1,0 +1,30 @@
+#!/usr/bin/env python3
+import sys
+import re
+import subprocess
+
+arabic_regex = re.compile(r"[\u0600-\u06FF]+(?:\s+[\u0600-\u06FF]+)*")
+
+def shape_match(m):
+    text = m.group(0)
+    try:
+        p = subprocess.run(
+            ["fribidi", "--clean", "--nopad"],
+            input=text,
+            text=True,
+            capture_output=True,
+            check=False
+        )
+        return p.stdout.strip("\n")
+    except Exception:
+        return text
+
+try:
+    for line in sys.stdin:
+        if re.search(r"[\u0600-\u06FF]", line):
+            sys.stdout.write(arabic_regex.sub(shape_match, line))
+        else:
+            sys.stdout.write(line)
+        sys.stdout.flush()
+except (BrokenPipeError, KeyboardInterrupt):
+    pass

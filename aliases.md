@@ -17,10 +17,11 @@ This file contains all the active shortcuts (aliases) configured in your termina
 ## 📄 File & Directory Listing
 | Alias | Original Command | Description |
 | :--- | :--- | :--- |
-| `ls` | `eza --icons` | Lists files and folders with beautiful icons. |
-| `ll` | `eza -la --icons` | Lists all files (including hidden ones) with detailed permissions, sizes, and icons. |
-| `lt` | `eza --tree --icons=always --color=always -la` | Displays the folder tree in standard view (best for small folders). |
-| `ltt` | `eza --tree --icons=always --color=always -la \| less -R` | Displays the folder tree with colors and icons inside an interactive pager (less) for infinite scrolling (best for huge folders). |
+| `ls` | `eza --icons` | Lists files and folders with icons and automatic Arabic/RTL text shaping. |
+| `ll` | `eza -la --icons` | Lists all files (including hidden ones) with detailed permissions, sizes, icons, and automatic Arabic/RTL text shaping. |
+| `cat` | `bat --paging=never` | Displays file content with syntax highlighting and automatic Arabic/RTL text shaping. |
+| `lt` | `eza --tree --icons=always --color=always -la` | Displays the folder tree with icons, colors, and automatic Arabic/RTL text shaping. |
+| `ltt` | `eza --tree --icons=always --color=always -la \| less -R` | Displays the folder tree with colors, icons, and Arabic shaping inside an interactive pager (less). |
 | `lttxt` | `eza --tree -la --color=never > tree.txt` | Automatically saves the entire tree output into a clean text file named 'tree.txt' in the current folder. |
 | `lttxtf [name]` | `eza --tree -la --color=never > "$1"` | A flexible function that saves the tree output into any file name you provide (e.g., `lttxtf project.txt`). |
 

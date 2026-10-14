@@ -21,18 +21,39 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # Added by Antigravity IDE
 export PATH="/Users/mac/.antigravity-ide/antigravity-ide/bin:$PATH"
 
-# --- Modern Colorful Terminal Tools (matching dotfiles) ---
-alias ls='eza --color=always --group-directories-first --icons=auto'
-alias ll='eza -lh --color=always --group-directories-first --icons=auto'
-alias la='eza -lah --color=always --group-directories-first --icons=auto'
-alias cat='bat --paging=never'
+# --- Modern Colorful Terminal Tools (Arabic-aware & Auto-Shaped) ---
+ls() {
+    if [ -t 1 ]; then
+        eza --icons --color=always "$@" | arbidi
+    else
+        eza --icons "$@"
+    fi
+}
+
+ll() {
+    if [ -t 1 ]; then
+        eza -la --icons --color=always "$@" | arbidi
+    else
+        eza -la --icons "$@"
+    fi
+}
+
+cat() {
+    if [ -t 1 ]; then
+        if [ $# -eq 0 ]; then
+            command cat | arbidi
+        else
+            bat --paging=never --color=always "$@" 2>/dev/null | arbidi || command cat "$@" | arbidi
+        fi
+    else
+        command cat "$@"
+    fi
+}
 
 # --- Aliases ---
 alias ..="cd .."
 alias ...="cd ../.."
 alias c="clear"
-alias ls="eza --icons"
-alias ll="eza -la --icons"
 alias g="git"
 alias gs="git status"
 alias ga="git add ."
@@ -46,8 +67,8 @@ mkcd() { mkdir -p "$1" && cd "$1"; }
 alias myip="curl -s http://ipecho.net/plain; echo"
 alias ports="lsof -iTCP -sTCP:LISTEN -n -P"
 alias ff="fd --type f --hidden --exclude .git | fzf"
-alias lt="eza --tree --icons=always --color=always -la"
-alias ltt="eza --tree --icons=always --color=always -la | LESSCHARSET=utf-8 less -R"
+alias lt="eza --tree --icons=always --color=always -la | arbidi"
+alias ltt="eza --tree --icons=always --color=always -la | arbidi | LESSCHARSET=utf-8 less -R"
 alias lttxt="eza --tree -la --color=never > tree.txt"
 lttxtf() { eza --tree -la --color=never > "$1"; }
 

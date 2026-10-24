@@ -80,8 +80,10 @@ Fuzzy finding is now powered by `fd` and styled with a 60% reversed rounded bord
 ### 11. Advanced Archive Splitting & Merging (7-Zip)
 Integrated `7z` functionality to handle massive files and folders. Features custom aliases (`split-tg`, `split-1g`, `unsplit`) designed to intelligently split large backups into smaller chunks (like 1.9GB for Telegram) and automatically merge/extract `.001`, `.002` multipart files seamlessly.
 
-### 12. Smart Penetration Testing Launcher (Exegol)
-A highly automated and intelligent launcher for the Exegol hacking environment. Using the `exe` command, the terminal will automatically check if the Docker daemon is running, start Docker Desktop in the background if it's closed, wait patiently for it to become fully responsive, and then seamlessly launch the `pentest free` workspace.
+### 12. Smart Penetration Testing Launcher (Exegol CLI & GUI)
+A highly automated and intelligent launcher for the Exegol hacking environment:
+- **CLI Mode (`exe`):** Automatically checks if Docker is running, starts Docker Desktop in the background if closed, waits for the daemon to become fully responsive, and seamlessly launches the `pentest free` workspace.
+- **GUI Desktop Mode (`exe-desktop`):** Ensures Docker and the `pentest` container are running, initiates the XFCE/TigerVNC desktop services internally, bridges port 6080 to your Mac via a local socket bridge, and automatically opens the full graphical desktop in your browser at `http://localhost:6080/vnc.html`.
 
 ### 13. OpenCode CLI Integration
 Integrated support for the OpenCode CLI globally. Type `code` from anywhere in the terminal to launch the `@opencode/cli` tool (without needing `npx`), and simply run `code-update` to automatically fetch and install the latest updates for it via npm.

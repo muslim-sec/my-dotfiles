@@ -233,8 +233,33 @@ exe() {
         sleep 1
     done
     
-    echo "✅ Docker is ready! Launching Exegol..."
+    echo "Docker is ready! Launching Exegol..."
     exegol start pentest free
+}
+
+exe-desktop() {
+    if ! pgrep -q "Docker"; then
+        echo "Docker Desktop is not running. Starting it now..."
+        open -a Docker
+        while ! docker info >/dev/null 2>&1; do
+            sleep 1
+        done
+    fi
+
+    if [ "$(docker inspect -f '{{.State.Running}}' exegol-pentest 2>/dev/null)" != "true" ]; then
+        echo "Starting exegol-pentest container..."
+        docker start exegol-pentest >/dev/null 2>&1
+    fi
+
+    docker exec exegol-pentest bash -c "pgrep -f Xtigervnc >/dev/null 2>&1 || EXEGOL_DESKTOP_HOST=0.0.0.0 EXEGOL_DESKTOP_PORT=6080 desktop-start" 2>/dev/null
+
+    if ! lsof -i :6080 >/dev/null 2>&1; then
+        socat TCP-LISTEN:6080,fork,reuseaddr EXEC:"docker exec -i exegol-pentest nc 127.0.0.1 6080" >/dev/null 2>&1 &
+        sleep 1
+    fi
+
+    echo "Exegol Pentest Desktop is ready at http://localhost:6080/vnc.html"
+    open "http://localhost:6080/vnc.html"
 }
 export PATH="/Users/mac/strix:$PATH"
 

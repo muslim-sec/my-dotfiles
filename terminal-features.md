@@ -93,3 +93,9 @@ A fast, privacy-focused system cleaner and optimization CLI for macOS (`mole` / 
 
 ### 15. Native Arabic & Right-to-Left (RTL) Support (Dosu & FriBidi)
 Integrated bidirectional text rendering and Arabic script shaping. Launching an interactive session via `arabic` (powered by Dosu) intercepts terminal output dynamically, executing the Unicode Bidirectional Algorithm (UAX #9) and OpenType character shaping so Arabic text appears cursive, properly ordered, and correctly connected. Additionally, `arcat` (powered by FriBidi) allows reading or streaming Arabic text files cleanly directly from the command line without distorting terminal grid layouts or breaking shell prompts.
+
+### 16. Cross-Platform Terminal Session Recorder (`record`)
+A unified terminal session recording function designed for penetration testing, CTF challenges, and command logging:
+- **Automatic Environment Detection:** Resolves the syntax difference between macOS BSD `script` (`-q -F`) and Linux util-linux `script` (`-q -f`).
+- **Unified Storage:** Automatically routes recordings to the shared pentest workspace (`/workspace/session.txt` inside Exegol or `~/.exegol/workspaces/pentest/session.txt` on macOS), allowing seamless log synchronization between container and host.
+- **Flexible Options:** Supports `-a` / `--append` to append to the log instead of overwriting, custom target file paths (`record custom.txt`), and `-h` / `--help`. Type `exit` or press `Ctrl+D` to stop recording cleanly.

@@ -128,6 +128,7 @@ This file contains all the active shortcuts (aliases) configured in your termina
 | :--- | :--- | :--- |
 | `exe` | `exegol start...` | Smart Exegol Launcher: Checks if Docker is running, starts it if it isn't, waits for the daemon to be ready, then seamlessly launches the `pentest` workspace on the `free` image. |
 | `exe-desktop` | `open http://localhost:6080/vnc.html` | Exegol Desktop Launcher: Ensures Docker and the `pentest` container are running, initiates the GUI VNC/web desktop services, establishes the localhost port bridge, and opens the graphical desktop in your browser. |
+| `record` | `record [-a] [file]` | Cross-Platform Session Recorder: Records terminal session into `/workspace/session.txt` (inside Exegol) or `~/.exegol/workspaces/pentest/session.txt` (on macOS). Resolves BSD vs Linux `script` flags. Supports `-a` to append. Type `exit` to stop. |
 
 ## 🧘‍♂️ Focus & ADHD Mode (Wi-Fi Control)
 | Alias | Original Command | Description |

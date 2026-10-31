@@ -233,6 +233,69 @@ exe-desktop() {
     open "http://localhost:6080/vnc.html"
 }
 
+# --- Terminal Session Recorder (Cross-Platform: macOS & Exegol) ---
+record() {
+    local append=false
+    local target=""
+
+    while [ $# -gt 0 ]; do
+        case "$1" in
+            -h|--help)
+                echo "Usage: record [-a] [file]"
+                echo "Options:"
+                echo "  -a, --append   Append to the log file instead of overwriting"
+                echo "  -h, --help     Show this help message"
+                echo "Default destination:"
+                echo "  Exegol: /workspace/session.txt"
+                echo "  macOS:  ~/.exegol/workspaces/pentest/session.txt"
+                return 0
+                ;;
+            -a|--append)
+                append=true
+                shift
+                ;;
+            *)
+                target="$1"
+                shift
+                ;;
+        esac
+    done
+
+    if [ -z "$target" ]; then
+        if [ -d "/workspace" ]; then
+            target="/workspace/session.txt"
+        elif [ -d "$HOME/.exegol/workspaces/pentest" ]; then
+            target="$HOME/.exegol/workspaces/pentest/session.txt"
+        else
+            target="./session.txt"
+        fi
+    fi
+
+    local target_dir
+    target_dir="$(dirname "$target")"
+    if [ ! -d "$target_dir" ]; then
+        mkdir -p "$target_dir"
+    fi
+
+    if [ "$(uname)" = "Darwin" ]; then
+        echo "Recording session to: $target"
+        echo "Type 'exit' to stop recording."
+        if [ "$append" = true ]; then
+            script -q -F -a "$target"
+        else
+            script -q -F "$target"
+        fi
+    else
+        echo "Recording session to: $target"
+        echo "Type 'exit' to stop recording."
+        if [ "$append" = true ]; then
+            script -q -f -a "$target"
+        else
+            script -q -f "$target"
+        fi
+    fi
+}
+
 # --- Focus & ADHD Mode ---
 alias wifi-stop='networksetup -setairportpower en0 off'
 alias wifi-start='networksetup -setairportpower en0 on'

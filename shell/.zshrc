@@ -255,7 +255,7 @@ exe-desktop() {
     open "http://localhost:6080/vnc.html"
 }
 
-# --- Terminal Session Recorder (Cross-Platform: macOS & Exegol) ---
+# --- Terminal Session Recorder ---
 record() {
     local append=false
     local target=""
@@ -268,8 +268,7 @@ record() {
                 echo "  -a, --append   Append to the log file instead of overwriting"
                 echo "  -h, --help     Show this help message"
                 echo "Default destination:"
-                echo "  Exegol: /workspace/session.txt"
-                echo "  macOS:  ~/.exegol/workspaces/pentest/session.txt"
+                echo "  ~/.exegol/workspaces/pentest/session.txt"
                 return 0
                 ;;
             -a|--append)
@@ -284,9 +283,7 @@ record() {
     done
 
     if [ -z "$target" ]; then
-        if [ -d "/workspace" ]; then
-            target="/workspace/session.txt"
-        elif [ -d "$HOME/.exegol/workspaces/pentest" ]; then
+        if [ -d "$HOME/.exegol/workspaces/pentest" ]; then
             target="$HOME/.exegol/workspaces/pentest/session.txt"
         else
             target="./session.txt"
@@ -299,23 +296,24 @@ record() {
         mkdir -p "$target_dir"
     fi
 
+    echo "Recording terminal session to: $target"
+    echo "Everything you do (including running 'exe' and Exegol commands) will be logged."
+    echo "Type 'exit' when you are done to stop recording."
+
     if [ "$(uname)" = "Darwin" ]; then
-        echo "Recording session to: $target"
-        echo "Type 'exit' to stop recording."
         if [ "$append" = true ]; then
-            script -q -F -a "$target"
+            BASH_SILENCE_DEPRECATION_WARNING=1 script -q -F -a "$target"
         else
-            script -q -F "$target"
+            BASH_SILENCE_DEPRECATION_WARNING=1 script -q -F "$target"
         fi
     else
-        echo "Recording session to: $target"
-        echo "Type 'exit' to stop recording."
         if [ "$append" = true ]; then
             script -q -f -a "$target"
         else
             script -q -f "$target"
         fi
     fi
+    echo "Session recording saved to: $target"
 }
 export PATH="/Users/mac/strix:$PATH"
 

@@ -94,9 +94,9 @@ A fast, privacy-focused system cleaner and optimization CLI for macOS (`mole` / 
 ### 15. Native Arabic & Right-to-Left (RTL) Support (Dosu & FriBidi)
 Integrated bidirectional text rendering and Arabic script shaping. Launching an interactive session via `arabic` (powered by Dosu) intercepts terminal output dynamically, executing the Unicode Bidirectional Algorithm (UAX #9) and OpenType character shaping so Arabic text appears cursive, properly ordered, and correctly connected. Additionally, `arcat` (powered by FriBidi) allows reading or streaming Arabic text files cleanly directly from the command line without distorting terminal grid layouts or breaking shell prompts.
 
-### 16. Terminal Session Recorder (`record`)
-A terminal session recording utility designed for penetration testing, CTF challenges, and full terminal logging on macOS:
-- **Host-Level Full Capture:** Runs directly on your macOS terminal before launching Exegol. Everything displayed on screen—including Docker startup, running `exe`, tools executed inside Exegol, and returning to macOS—is captured in the log.
-- **Silenced Deprecation Notice:** Automatically suppresses macOS's default bash deprecation banner so your recording session starts cleanly.
-- **Shared Workspace Storage:** Automatically writes by default to `~/.exegol/workspaces/pentest/session.txt`, making the recorded log file instantly visible and accessible inside the Exegol container at `/workspace/session.txt`.
-- **Flexible Options:** Supports `-a` / `--append` to append to the log instead of overwriting, custom target file paths (`record custom.txt`), and `-h` / `--help`. Type `exit` or press `Ctrl+D` to stop recording cleanly.
+### 16. Post-Hoc Terminal History Dumper (`dumplog`)
+A terminal utility that dumps the complete active Ghostty scrollback buffer to a text file on demand without needing to start a recording session beforehand:
+- **Zero Pre-Planning Required:** You do not need to run a command before starting your work. Run your tools, commands, or Exegol sessions normally; whenever you need the log, execute `dumplog`.
+- **Ghostty Native Integration:** Leverages Ghostty's native scrollback export action directly via AppleScript and clipboard synchronization, safely capturing the entire history including commands, output, errors, and tool results.
+- **Default Output Destination:** Automatically saves to `/Users/mac/Downloads/session.txt` by default.
+- **Custom Destination Support:** Optionally provide a custom target path (e.g. `dumplog ~/Desktop/test.txt`).

@@ -1,0 +1,69 @@
+#!/bin/bash
+# Dumps Ghostty's entire terminal history (scrollback or screen) to a text file.
+# Default target: /Users/mac/Downloads/session.txt
+
+TARGET="${1:-/Users/mac/Downloads/session.txt}"
+mkdir -p "$(dirname "$TARGET")"
+
+TMP_BASE="${TMPDIR:-/tmp}"
+
+find_recent() {
+    local pattern="$1"
+    local max_age_seconds=5
+    local now
+    now="$(date +%s)"
+
+    # Check clipboard first if valid
+    local clip
+    clip="$(pbpaste 2>/dev/null)"
+    if [ -n "$clip" ] && [ -f "$clip" ]; then
+        local mtime
+        mtime="$(stat -f "%m" "$clip" 2>/dev/null || echo 0)"
+        if [ $(( now - mtime )) -le "$max_age_seconds" ]; then
+            echo "$clip"
+            return 0
+        fi
+    fi
+
+    # Check filesystem directly in temp directory
+    for f in $(ls -t "$TMP_BASE"/*/"$pattern" 2>/dev/null | head -n 3); do
+        if [ -f "$f" ]; then
+            local mtime
+            mtime="$(stat -f "%m" "$f" 2>/dev/null || echo 0)"
+            if [ $(( now - mtime )) -le "$max_age_seconds" ]; then
+                echo "$f"
+                return 0
+            fi
+        fi
+    done
+    return 1
+}
+
+# 1. Ask Ghostty to export scrollback
+osascript -e 'tell application "Ghostty" to perform action "write_scrollback_file:copy" on focused terminal of selected tab of front window' >/dev/null 2>&1
+
+for i in {1..12}; do
+    SRC="$(find_recent "history.txt")"
+    if [ -n "$SRC" ] && [ -f "$SRC" ]; then
+        cp "$SRC" "$TARGET"
+        echo "Terminal history saved to: $TARGET"
+        exit 0
+    fi
+    sleep 0.1
+done
+
+# 2. Fallback: If no scrollback exists (fresh screen), ask Ghostty to export screen
+osascript -e 'tell application "Ghostty" to perform action "write_screen_file:copy" on focused terminal of selected tab of front window' >/dev/null 2>&1
+
+for i in {1..10}; do
+    SRC="$(find_recent "screen.txt")"
+    if [ -n "$SRC" ] && [ -f "$SRC" ]; then
+        cp "$SRC" "$TARGET"
+        echo "Terminal history saved to: $TARGET"
+        exit 0
+    fi
+    sleep 0.1
+done
+
+echo "Error: Could not dump terminal buffer."
+exit 1

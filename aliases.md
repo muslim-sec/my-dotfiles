@@ -128,7 +128,7 @@ This file contains all the active shortcuts (aliases) configured in your termina
 | :--- | :--- | :--- |
 | `exe` | `exegol start...` | Smart Exegol Launcher: Checks if Docker is running, starts it if it isn't, waits for the daemon to be ready, then seamlessly launches the `pentest` workspace on the `free` image. |
 | `exe-desktop` | `open http://localhost:6080/vnc.html` | Exegol Desktop Launcher: Ensures Docker and the `pentest` container are running, initiates the GUI VNC/web desktop services, establishes the localhost port bridge, and opens the graphical desktop in your browser. |
-| `record` | `record [-a] [file]` | Terminal Session Recorder: Runs on your macOS terminal to log everything you do (including launching `exe` and working inside Exegol). Saves by default to `~/.exegol/workspaces/pentest/session.txt` (accessible inside Exegol as `/workspace/session.txt`). Supports `-a` to append. Type `exit` to stop. |
+| `dumplog` | `dumplog [file]` | Terminal History Dumper: Instantly exports the entire Ghostty terminal scrollback buffer to a text file after you finish working (no pre-recording needed). Defaults to `/Users/mac/Downloads/session.txt`. |
 
 ## 🧘‍♂️ Focus & ADHD Mode (Wi-Fi Control)
 | Alias | Original Command | Description |

@@ -100,3 +100,8 @@ A terminal utility that dumps the complete active Ghostty scrollback buffer to a
 - **Ghostty Native Integration:** Leverages Ghostty's native scrollback export action directly via AppleScript and clipboard synchronization, safely capturing the entire history including commands, output, errors, and tool results.
 - **Default Output Destination:** Automatically saves to `/Users/mac/Downloads/session.txt` by default.
 - **Custom Destination Support:** Optionally provide a custom target path (e.g. `dumplog ~/Desktop/test.txt`).
+
+### 17. Single-Click Cursor Navigation & Ninja-Cursor Animation in Ghostty
+Full-terminal interactive cursor navigation and smooth animation:
+- **Obsidian-Style Single Click (`cursor-click-to-move`)**: Hover your mouse over any character in your command line and click once. Ghostty translates your click position into immediate cursor placement using OSC 133 semantic prompt integration. No modifier keys or arrow buttons needed.
+- **Ninja-Cursor / Neovide Smooth Smear Shader (`cursor_warp.glsl`)**: Hardware-accelerated GLSL custom shader running on Ghostty's GPU engine that renders an elastic trailing trail behind the cursor whenever you type, jump words, or move.

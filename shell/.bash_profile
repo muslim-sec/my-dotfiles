@@ -62,6 +62,13 @@ alias update="brew update && brew upgrade"
 
 eval "$(starship init bash)"
 
+# Ghostty Shell Integration (Enables cursor-click-to-move via OSC 133 prompt marking)
+if [ -n "$GHOSTTY_RESOURCES_DIR" ] && [ -f "$GHOSTTY_RESOURCES_DIR/shell-integration/bash/ghostty.bash" ]; then
+    builtin source "$GHOSTTY_RESOURCES_DIR/shell-integration/bash/ghostty.bash"
+elif [ -f "/Applications/Ghostty.app/Contents/Resources/ghostty/shell-integration/bash/ghostty.bash" ]; then
+    builtin source "/Applications/Ghostty.app/Contents/Resources/ghostty/shell-integration/bash/ghostty.bash"
+fi
+
 # --- Advanced & Tree Aliases ---
 mkcd() { mkdir -p "$1" && cd "$1"; }
 alias myip="curl -s http://ipecho.net/plain; echo"
@@ -284,3 +291,7 @@ arcat() {
         fribidi "$@"
     fi
 }
+
+
+# Added by Antigravity CLI installer
+export PATH="/Users/mac/.local/bin:$PATH"

@@ -17,3 +17,11 @@ palette = 12=#6AABF0
 palette = 13=#C43878
 palette = 14=#7ED4E0
 palette = 15=#D8DCE4
+
+# Cursor Navigation (Click anywhere to move cursor like in Obsidian)
+cursor-click-to-move = true
+
+# Cursor Animation Shader (Ninja-cursor / Neovide-like smear trail)
+custom-shader = /Users/mac/.config/ghostty/shaders/ghostty/cursor_warp.glsl
+custom-shader-animation = true
+

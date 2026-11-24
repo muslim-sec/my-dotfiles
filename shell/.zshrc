@@ -56,6 +56,13 @@ alias update="brew update && brew upgrade"
 
 eval "$(starship init zsh)"
 
+# Ghostty Shell Integration (Enables cursor-click-to-move via OSC 133 prompt marking)
+if [ -n "$GHOSTTY_RESOURCES_DIR" ] && [ -f "$GHOSTTY_RESOURCES_DIR/shell-integration/zsh/ghostty-integration" ]; then
+    builtin source "$GHOSTTY_RESOURCES_DIR/shell-integration/zsh/ghostty-integration"
+elif [ -f "/Applications/Ghostty.app/Contents/Resources/ghostty/shell-integration/zsh/ghostty-integration" ]; then
+    builtin source "/Applications/Ghostty.app/Contents/Resources/ghostty/shell-integration/zsh/ghostty-integration"
+fi
+
 # --- Advanced & Tree Aliases ---
 mkcd() { mkdir -p "$1" && cd "$1"; }
 alias myip="curl -s http://ipecho.net/plain; echo"
@@ -346,3 +353,7 @@ arcat() {
 }
 export OPENCODE_BIN_PATH="/Users/mac/Library/Application Support/agent-teams-ai/data/runtimes/opencode/versions/1.19.4/opencode-darwin-arm64/opencode"
 export CLAUDE_MULTIMODEL_OPENCODE_BIN_PATH="/Users/mac/Library/Application Support/agent-teams-ai/data/runtimes/opencode/versions/1.19.4/opencode-darwin-arm64/opencode"
+
+
+# Added by Antigravity CLI installer
+export PATH="/Users/mac/.local/bin:$PATH"
